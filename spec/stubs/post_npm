@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Status: 200
+Content-Type: application/json; charset=utf-8
+
+{"status":"success","output":"stdout: express@2.4.3 ./node_modules/express \n"}

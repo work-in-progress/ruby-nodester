@@ -101,14 +101,17 @@ describe Nodester::Client do
       res = @client.env
     end
   end
+=end
 
   context "when invoking update_npm" do
     it "should perform an op against the npm" do
-      res = @client.update_npm
+      res = @client.update_npm 'myappname','install','express'
+      res['output'].length.should > 0
+      res['status'].should == 'success'
     end
   end
 
-
+=begin
   context "when invoking create_appdomain" do
     it "should create an app domain" do
       res = @client.create_appdomain

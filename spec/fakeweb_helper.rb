@@ -20,7 +20,8 @@ def fake_it_all
     # POST URLs
     :post => {
       'http://nodester.com/coupon' => 'platform_post_coupon',
-      'http://arthur:dent@api.nodester.com/app' => 'post_app'      
+      'http://arthur:dent@api.nodester.com/app' => 'post_app',
+      'http://arthur:dent@api.nodester.com/npm' => 'post_npm'        
     },
     # PUT URLs
     :put => {

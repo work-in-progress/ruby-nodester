@@ -166,8 +166,10 @@ module Nodester
       handle_result self.class.get('/env', options)
     end
   
-    def update_npm(action,package)
-      options={:body => {:action => action,:package=>package},:basic_auth => @auth}
+  # curl -X POST -u "mwawrusch:mw09543089" -d "appname=myappname&action=install&package=express" http://api.nodester.com/npm
+  
+    def update_npm(appname,action,package)
+      options={:body => {:appname => appname,:action => action,:package=>package},:basic_auth => @auth}
       handle_result self.class.post('/npm', options)
     end
   
