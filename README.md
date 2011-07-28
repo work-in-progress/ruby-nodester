@@ -1,17 +1,17 @@
 
-WARNING: NOT RELEASED YET
+WARNING: First version and my first published gem - need to work on docs and specs.
 
 = Nodester
 
 An API wrapper for the nodester API (http://nodester.com). The initial version uses a straight approach, an ActiveResource like interface might be added if there is enough interest.
 
-== Install
+## Install
 
 Include this in your gemfile
 
 gem 'nodester'
 
-== Use
+## Use
 
 client = Nodester::Client.new("username","password")
 client.create_app 'myappname','server.js'
@@ -24,24 +24,22 @@ All results are hashes, with strings (not symbols) as keys.
 
 In case of an error either a ResponseError or a StandardError is raised.
 
-== Dependencies
+## Dependencies
 
 * Httparty 
 
-
-== Acknowledgments
+## Acknowledgments
 
 Thanks to 
 
 * Aaron Russel (https://github.com/aaronrussell) whose cloudapp api helped a lot (some spec code is taken verbatim) 
 * John Nunemaker (https://github.com/jnunemaker) for httparty and all his other contributions.
 
-
-== Trivia
+## Trivia
 
 This gem was created to the tunes of Natalia Kills and Nicki Minaj.
 
-== Contributing to nodester
+## Contributing to nodester
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
