@@ -1,6 +1,25 @@
 require 'httparty'
 
 module Nodester
+  # An API wrapper for the nodester.com API
+  # @example Request a nodester.com coupon
+  #   client = Nodester::Client.new("","")
+  #   client.platform_coupon_request('arthur@dent.com')
+  # 
+  # @example Convert a coupon (received per email) to an account
+  #   client = Nodester::Client.new("","")
+  #   client.platform_create_user("coupon",'arthur','dent','arthur@dent.com','rsakey')
+  #
+  # @example Get the platform status
+  #   client = Nodester::Client.new("","")
+  #   res = client.platform_status()
+  #   puts "Status #{res['status']} Apps Hosted #{res['appshosted']} Apps Running #{res['appsrunning']}"
+  # 
+  # @example Create an app
+  #   client = Nodester::Client.new("arthur","dent")
+  #   client.create_app 'myappname','server.js'
+  #
+  #   
   class Client
     include HTTParty
     base_uri 'http://api.nodester.com'
