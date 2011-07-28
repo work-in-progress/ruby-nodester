@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Status: 200
+Content-Type: application/json; charset=utf-8
+
+{ status : 'success - you are now in queue to receive an invite on our next batch!'}

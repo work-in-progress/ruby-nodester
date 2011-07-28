@@ -1,5 +1,5 @@
 require "nodester/version"
 
 module Nodester
-  # Your code goes here...
+  require "nodester/client"
 end
