@@ -1,7 +1,7 @@
 
 WARNING: First version and my first published gem - need to work on docs and specs.
 
-= Nodester
+## Nodester
 
 An API wrapper for the nodester API (http://nodester.com). The initial version uses a straight approach, an ActiveResource like interface might be added if there is enough interest.
 
