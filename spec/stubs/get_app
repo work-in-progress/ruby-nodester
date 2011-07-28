@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Status: 200
+Content-Type: application/json; charset=utf-8
+
+{"status":"success","port":11092,"gitrepo":"git@nodester.com:/node/git/mwawrusch/2939-bf58ab1dd19cc93cc4427bb920c0ff4b.git","start":"server.js","running":false,"pid":"unknown"}

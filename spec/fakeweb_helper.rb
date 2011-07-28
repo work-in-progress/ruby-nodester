@@ -13,11 +13,14 @@ def fake_it_all
   {
     # GET URLs
     :get => {
-      'http://nodester.com/status' => 'platform_get_status'
+      'http://nodester.com/status' => 'platform_get_status',
+      'http://arthur:dent@api.nodester.com/apps' => 'get_apps',
+      %r|http://arthur:dent@api.nodester.com/app/[a-zA-Z0-0]+| => 'get_app'
     },
     # POST URLs
     :post => {
-      'http://nodester.com/coupon' => 'platform_post_coupon'
+      'http://nodester.com/coupon' => 'platform_post_coupon',
+      'http://arthur:dent@api.nodester.com/app' => 'post_app'      
     },
     # PUT URLs
     :put => {

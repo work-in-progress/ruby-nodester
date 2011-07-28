@@ -77,7 +77,8 @@ module Nodester
     #   appname (required). The name of the app.
     #   start (required). The file to start, for example server.js.
     # Returns:
-    #   status : "success" |
+    #   status : "success" | "failure"
+    #   message : "some text" ==> Only if failure
     #   port : 12345
     #   gitrepo : 'git@nodester.com:/node/git/mwawrusch/blah.git'
     #   start : "the value of start, for example servre.js"
@@ -96,14 +97,21 @@ module Nodester
       handle_result self.class.put('/app', options)
     end
 
+    def start_stop_app(appname,running = true)
+      
+      options={:body=> {:appname => appname, :running=>start}, :basic_auth => @auth}
+      handle_result self.class.put('/app', options)
+    end
+
+
     def delete_app(appname)
       options={:body => {:appname => appname}, :basic_auth => @auth}
       handle_result self.class.delete('/app', options)
     end
   
     def app(appname)
-      options={:body => {:appname => appname},:basic_auth => @auth}
-      handle_result self.class.get('/app', options)
+      options={:body => {},:basic_auth => @auth}
+      handle_result self.class.get("/app/#{appname}", options)
     end
   
     # Get a list of all apps.
@@ -119,7 +127,7 @@ module Nodester
     #   gitrepo : 'git@nodester.com:/node/git/mwawrusch/2914-2295037e88fed947a9b3b994171c5a9e.git", "running"=>false, "pid"=>"unknown"} 
     def apps()
       options={:basic_auth => @auth}
-      handle_result self.class.get('/apps/', options)
+      handle_result self.class.get('/apps', options)
     end
   
   

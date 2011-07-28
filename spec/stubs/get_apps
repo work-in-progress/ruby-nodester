@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Status: 200
+Content-Type: application/json; charset=utf-8
+
+[{"name":"a1234","port":11092,"gitrepo":"git@nodester.com:/node/git/mwawrusch/2939-bf58ab1dd19cc93cc4427bb920c0ff4b.git","running":false,"pid":"unknown"},{"name":"testxyz123","port":11067,"gitrepo":"git@nodester.com:/node/git/mwawrusch/2914-2295037e88fed947a9b3b994171c5a9e.git","running":false,"pid":"unknown"}]
