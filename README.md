@@ -5,6 +5,8 @@ WARNING: First version and my first published gem - need to work on docs and spe
 
 An API wrapper for the nodester API (http://nodester.com). The initial version uses a straight approach, an ActiveResource like interface might be added if there is enough interest.
 
+[![Build Status](http://travis-ci.org/scottyapp/nodester.png)](http://travis-ci.org/scottyapp/nodester)
+
 ## Install
 
 Include this in your gemfile
