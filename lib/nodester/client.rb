@@ -66,23 +66,36 @@ private
 
 public  
     # Creates a coupon request against http://nodester.com for early access.
-    # @node Flow is as follows: You post this and receive a coupon per email.
-    # @param (String): email the email where the coupon should be sent to.
+    # @param (String) email the email where the coupon should be sent to.
     # @return [HTTParty::Response] A response.
-    #   'status' : "success - you are now in queue to receive an invite on our next batch!" | "failure"
+    # @note Flow is as follows: You post this and receive a coupon per email.
+    #   The result contains the following entries (check http://nodester.com for up to date information):
+    #   *  'status' : "success - you are now in queue to receive an invite on our next batch!" | "failure"
     def platform_coupon_request(email)
       options={ :body => {:email => email}, :base_uri => PLATFORM_URI}
       handle_result self.class.post('/coupon', options)
     end
 
-    # Returns the nodester.com platform status
-    # {:status=>"up", :appshosted=>1599, :appsrunning=>988} 
+    # Retrieves the http://nodester.com platform status
+    # @return [HTTParty::Response] A response
+    # @note The result contains the following entries (check http://nodester.com for up to date information):
+    #   * 'status' : "up"
+    #   * 'appshosted' : 599
+    #   * 'appsrunning' : 988 
     def platform_status()
       options = {:base_uri => PLATFORM_URI}
       handle_result self.class.get('/status', options)
     end
 
-    # Creates a new user from the coupon given.
+    # Creates a new user by redeeming a coupon.
+    # @see Client#platform_coupon_request platform_coupon_request for details on how to obtain a coupon.
+    #
+    # @param (String) coupon the coupon received from nodester.
+    # @param (String) user the user name of the new user.
+    # @param (String) password the password of the new user.
+    # @param (String) email the email of the new user.
+    # @param (String) rsakey the rsa key of the new user.
+    # @return [HTTParty::Response] A response.
     def platform_create_user(coupon,user,password,email,rsakey)
       options={ :body => {:coupon => coupon,:user =>user,:password=>password,:email=>email,:rsakey=>rsakey}, :base_uri => PLATFORM_URI}
       handle_result self.class.post('/user', options)
@@ -92,13 +105,17 @@ public
     # API specific functions
     # ------------------------------------
   
-    # Updates the current user.
+    # Updates the settings for the current user.
+    # @option opts [String] :password the password to update.
+    # @option opts [String] :rsakey the rsa key to update.
+    # @return [HTTParty::Response] A response.
     def update_user(opts={})
       options={:body => opts,:basic_auth => @auth}
       handle_result self.class.put('/user', options)
     end
 
     # Deletes the current user.
+    # @return [HTTParty::Response] A response.
     def platform_delete_user()
       options={:basic_auth => @auth}
       handle_result self.class.delete('/user', options)
@@ -106,76 +123,99 @@ public
   
 
 
-    # Creates a new app
-    # Parameters are:
-    #   appname (required). The name of the app.
-    #   start (required). The file to start, for example server.js.
-    # Returns:
-    #   status : "success" | "failure"
-    #   message : "some text" ==> Only if failure
-    #   port : 12345
-    #   gitrepo : 'git@nodester.com:/node/git/mwawrusch/blah.git'
-    #   start : "the value of start, for example servre.js"
-    #   running : true | false 
-    #   pid : "unknown" | some pid 
+    # Creates a new app.
+    # @param (String) appname the name of the app.
+    # @param (String) start the file that contains the node.js startup code. (server.js)
+    # @return [HTTParty::Response] A response.
+    # @note The result contains the following entries (check http://nodester.com for up to date information):
+    #   * 'status' : "success" | "failure"
+    #   * 'message' : "some text" ==> Only if failure
+    #   * 'port' : 12345
+    #   * 'gitrepo' : 'git@nodester.com:/node/git/mwawrusch/blah.git'
+    #   * 'start' : "the value of start, for example servre.js"
+    #   * 'running' : true | false 
+    #   * 'pid' : "unknown" | some pid 
     def create_app(appname,start)
       options={:body => {:appname=>appname,:start=>start}, :basic_auth => @auth}
       handle_result self.class.post('/app', options)
     end
 
-    
+    # Updates properties of an app.
+    # @param (String) appname the name of the app.
+    # @option opts [String] :start the startup file that contains the node.js startup code.
+    # @return [HTTParty::Response] A response.
     def update_app(appname,opts = {})
       opts.merge!({:appname => appname})
       
       options={:body=> opts, :basic_auth => @auth}
       handle_result self.class.put('/app', options)
     end
-
+    
+    # Starts or stops an app.
+    # @param (String) appname the name of the app.
+    # @param (Boolean) running true to start the app; false to stop the app.
+    # @return [HTTParty::Response] A response.
     def start_stop_app(appname,running = true)
       
       options={:body=> {:appname => appname, :running=>start}, :basic_auth => @auth}
       handle_result self.class.put('/app', options)
     end
 
-
+    # Deletes an app.
+    # @param (String) appname the name of the app.
+    # @return [HTTParty::Response] A response.
     def delete_app(appname)
       options={:body => {:appname => appname}, :basic_auth => @auth}
       handle_result self.class.delete('/app', options)
     end
   
+    # Returns the properties of an app.
+    # @param (String) appname the name of the app.
+    # @return [HTTParty::Response] A response.
     def app(appname)
       options={:body => {},:basic_auth => @auth}
       handle_result self.class.get("/app/#{appname}", options)
     end
   
-    # Get a list of all apps.
-    # Returns:
+    # Returns a list of all apps.
+    # @return [HTTParty::Response] A response.
     #   An array containing a list of apps, if any.
-    #
-    # App object format:
-    #   name : testxyz1
-    #   port : 12344
-    #   gitrepo : 'git@nodester.com:/node/git/mwawrusch/blah.git'
-    #   running : false
-    #   pid : "unknown" | some pid 
-    #   gitrepo : 'git@nodester.com:/node/git/mwawrusch/2914-2295037e88fed947a9b3b994171c5a9e.git", "running"=>false, "pid"=>"unknown"} 
+    # @note The result contains the following entries (check http://nodester.com for up to date information):
+    #   * 'name' : 'testxyz1'
+    #   * 'port' : 12344
+    #   * 'gitrepo' : 'git@nodester.com:/node/git/mwawrusch/blah.git'
+    #   * 'running' : false
+    #   * 'pid' : "unknown" | some pid 
+    #   * 'gitrepo' : 'git@nodester.com:/node/git/mwawrusch/2914-2295037e88fed947a9b3b994171c5a9e.git", "running"=>false, "pid"=>"unknown"} 
     def apps()
       options={:basic_auth => @auth}
       handle_result self.class.get('/apps', options)
     end
   
   
-  
+    # Creates or updates a value for a key in the app's environment.
+    # @param (String) appname the name of the app.
+    # @param (String) key the key (name) of the evironment variable.
+    # @param (String) value the value of the environment variable.
+    # @return [HTTParty::Response] A response.
     def update_env(appname,key,value)
       options={:body => {:appname => appname,:key=>key,:value=>value},:basic_auth => @auth}
       handle_result self.class.put('/env', options)
     end
 
+    # Deletes a key from the app's environment.
+    # @param (String) appname the name of the app.
+    # @param (String) key the key (name) of the evironment variable.
+    # @return [HTTParty::Response] A response.
     def delete_env(appname,key)
       options={:body => {:appname => appname,:key=>key},:basic_auth => @auth}
       handle_result self.class.delete('/env', options)
     end
   
+    # Returns the value of a key in the app's environment.
+    # @param (String) appname the name of the app.
+    # @param (String) key the key (name) of the evironment variable.
+    # @return [HTTParty::Response] A response.
     def env(appname,key)
       options={:body => {:appname => appname,:key=>key},:basic_auth => @auth}
       handle_result self.class.get('/env', options)
@@ -183,29 +223,44 @@ public
   
   # curl -X POST -u "mwawrusch:mw09543089" -d "appname=myappname&action=install&package=express" http://api.nodester.com/npm
   
+    # Manages the NPM package manager associated with an app.
+    # @param (String) appname the name of the app.
+    # @param (String) action the action to perform. Can be install|upgrade|uninstall. Check official documentation
+    #  for more info.
+    # @param (String) package the name of the package that should be worked with.
+    # @return [HTTParty::Response] A response.
     def update_npm(appname,action,package)
       options={:body => {:appname => appname,:action => action,:package=>package},:basic_auth => @auth}
       handle_result self.class.post('/npm', options)
     end
   
-  
+    # Creates a new domain entry for an app.
+    # @note Check out the http://notester.com site for up to date information how to set your
+    #   a record to route the domain to the actual servers.
+    # @param (String) appname the name of the app.
+    # @param (String) domain the domain to be associated with the app.
+    # @return [HTTParty::Response] A response.
     def create_appdomain(appname,domain)
       options={:body => {:appname => appname,:domain=>domain},:basic_auth => @auth}
       handle_result self.class.post('/appdomains', options)
     end
   
+    # Deletes a domain entry from an app.
+    # @param (String) appname the name of the app.
+    # @param (String) domain the domain to be disassociated from the app.
+    # @return [HTTParty::Response] A response.
     def delete_appdomain(appname,domain)
       options={:body => {:appname => appname,:domain=>domain},:basic_auth => @auth}
       handle_result self.class.delete('/appdomains', options)
     end
   
+    # Returns a list of all app domains for all apps of the current user.
+    # @return [HTTParty::Response] A response.
     def appdomains()
       options={:basic_auth => @auth}
       handle_result self.class.get('/appdomains', options)
     end
-  
-  
-  end
 
+  end
 end
 

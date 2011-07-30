@@ -3,7 +3,7 @@ WARNING: First version and my first published gem - need to work on docs and spe
 
 ## Nodester
 
-An API wrapper for the nodester API (http://nodester.com). The initial version uses a straight approach, an ActiveResource like interface might be added if there is enough interest.
+An API wrapper for the nodester API (<http://nodester.com>). The initial version uses a straight approach, an ActiveResource like interface might be added if there is enough interest.
 
 [![Build Status](http://travis-ci.org/scottyapp/nodester.png)](http://travis-ci.org/scottyapp/nodester)
 
@@ -14,13 +14,17 @@ Include this in your gemfile
 gem 'nodester'
 
 ## Use
+A more detailed description can be found at <http://rubydoc.info/gems/nodester>.
 
-client = Nodester::Client.new("username","password")
-client.create_app 'myappname','server.js'
-...
+###Some Sample Code
 
-Note: There are a couple of methods, notably the platform_create_request and platform_status methods that
-operate against www.nodester.com and not api.nodester.com, those do not require a userid/password. Just choose dummy/dummy or something similar.
+    client = Nodester::Client.new("username","password")
+    client.create_app 'myappname','server.js'
+    ...
+
+### Note
+There are a couple of methods, notably the platform_create_request and platform_status methods that
+operate against <http://nodester.com> and not <http://api.nodester.com>, those do not require a userid/password. Just choose dummy/dummy or something similar.
 
 All results are hashes, with strings (not symbols) as keys. 
 
@@ -34,14 +38,14 @@ In case of an error either a ResponseError or a StandardError is raised.
 
 Thanks to 
 
-* Aaron Russel (https://github.com/aaronrussell) whose cloudapp api helped a lot (some spec code is taken verbatim) 
-* John Nunemaker (https://github.com/jnunemaker) for httparty and all his other contributions.
+* Aaron Russel (<https://github.com/aaronrussell>) whose cloudapp api helped a lot (some spec code is taken verbatim) 
+* John Nunemaker (<https://github.com/jnunemaker>) for httparty and all his other contributions.
 
 ## Trivia
 
 This gem was created to the tunes of Natalia Kills and Nicki Minaj.
 
-## Contributing to nodester
+## Contributing to Nodester
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -53,6 +57,6 @@ This gem was created to the tunes of Natalia Kills and Nicki Minaj.
 
 == Copyright
 
-Copyright (c) 2011 Martin Wawrusch, inc. See LICENSE for
+Copyright (c) 2011 Martin Wawrusch. See LICENSE for
 further details.
 
