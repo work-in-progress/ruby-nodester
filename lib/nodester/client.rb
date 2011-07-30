@@ -1,7 +1,11 @@
 require 'httparty'
 
+# @author Martin Wawrusch
+#
+# An API wrapper for the http://nodester.com API
+# @see Client Client documentation for examples how to use the API.
 module Nodester
-  # An API wrapper for the nodester.com API
+  # The client to access the API.
   # @example Request a nodester.com coupon
   #   client = Nodester::Client.new("","")
   #   client.platform_coupon_request('arthur@dent.com')
@@ -24,16 +28,25 @@ module Nodester
     include HTTParty
     base_uri 'http://api.nodester.com'
 
+    # The uri used to access the nodester.com platform for account management
+    # and status purposes.
     PLATFORM_URI = 'http://nodester.com'
   
+    # Inititalizer for the client class. 
+    # @param [String] u the user name of your nodester.com account.
+    # @param [String] p the password of your nodester.com account.
+    # @return [Client] a new instance of the client.
     def initialize(u, p )
       @auth = {:username => u, :password => p}
     end
           
-
-    # Examines a bad response and raises an approriate exception
+private
+    # Examines a bad response and raises an appropriate exception
     #
-    # @param [HTTParty::Response] response
+    # @param [HTTParty::Response] the response as returned by the web request.
+    # @raise [ResponseError] raised in case of a web service related error.
+    # @raise [StandardError] raised in case of an error that is not web service related. 
+    # @return [HTTParty::Response] the response as returned by the web request.
     def self.bad_response(response)
       if response.class == HTTParty::Response
        raise ResponseError, response
@@ -41,20 +54,22 @@ module Nodester
       raise StandardError, "Unkown error"
     end
 
-    def handle_result(res)
-      res.ok? ? res : bad_response(res) 
+    # Examines a response and either returns the response or
+    # raise an exception.
+    # @param [HTTParty::Response] the response as returned by the web request.
+    # @raise [ResponseError] raised in case of a web service related error.
+    # @raise [StandardError] raised in case of an error that is not web service related. 
+    # @return [HTTParty::Response] the response as returned by the web request.
+    def handle_result(response)
+      response.ok? ? response : bad_response(response) 
     end
 
-    # ------------------------------------
-    # Nodester.com platform specific functions
-    # ------------------------------------
-  
-    # Creates a coupon request against nodester.com for early access
-    # Flow is as follows: You post this and receive a coupon per email.
-    # Parameters:
-    #   email (required) : "x@y.com"
-    # Returns:
-    #   status : "success - you are now in queue to receive an invite on our next batch!"
+public  
+    # Creates a coupon request against http://nodester.com for early access.
+    # @node Flow is as follows: You post this and receive a coupon per email.
+    # @param (String): email the email where the coupon should be sent to.
+    # @return [HTTParty::Response] A response.
+    #   'status' : "success - you are now in queue to receive an invite on our next batch!" | "failure"
     def platform_coupon_request(email)
       options={ :body => {:email => email}, :base_uri => PLATFORM_URI}
       handle_result self.class.post('/coupon', options)

@@ -1,0 +1,1422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Nodester::Client
+  
+    &mdash; Documentation by YARD 0.7.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Nodester.html" title="Nodester (module)">Nodester</a></span></span>
+     &raquo; 
+    <span class="title">Client</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Nodester::Client
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Nodester::Client</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">HTTParty</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/nodester/client.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+The client to access the API.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>
+Request a nodester.com coupon
+</p>
+</div></h4>
+      <pre class="example code"><span class='id client'>client</span> <span class='op'>=</span> <span class='const'>Nodester</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id client'>client</span><span class='period'>.</span><span class='id platform_coupon_request'>platform_coupon_request</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>arthur@dent.com</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
+    
+      <h4><div class='inline'><p>
+Convert a coupon (received per email) to an account
+</p>
+</div></h4>
+      <pre class="example code"><span class='id client'>client</span> <span class='op'>=</span> <span class='const'>Nodester</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id client'>client</span><span class='period'>.</span><span class='id platform_create_user'>platform_create_user</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>coupon</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>arthur</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dent</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>arthur@dent.com</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rsakey</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
+    
+      <h4><div class='inline'><p>
+Get the platform status
+</p>
+</div></h4>
+      <pre class="example code"><span class='id client'>client</span> <span class='op'>=</span> <span class='const'>Nodester</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id res'>res</span> <span class='op'>=</span> <span class='id client'>client</span><span class='period'>.</span><span class='id platform_status'>platform_status</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Status </span><span class='embexpr_beg'>#{</span><span class='id res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>status</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'> Apps Hosted </span><span class='embexpr_beg'>#{</span><span class='id res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>appshosted</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'> Apps Running </span><span class='embexpr_beg'>#{</span><span class='id res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>appsrunning</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre>
+    
+      <h4><div class='inline'><p>
+Create an app
+</p>
+</div></h4>
+      <pre class="example code"><span class='id client'>client</span> <span class='op'>=</span> <span class='const'>Nodester</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>arthur</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dent</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id client'>client</span><span class='period'>.</span><span class='id create_app'>create_app</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>myappname</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>server.js</span><span class='tstring_end'>'</span></span></pre>
+    
+  </div>
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="PLATFORM_URI-constant" class="">PLATFORM_URI =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+The uri used to access the nodester.com platform for account management and
+status purposes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://nodester.com</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+  
+
+
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#app-instance_method" title="#app (instance method)">- (Object) <strong>app</strong>(appname) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#appdomains-instance_method" title="#appdomains (instance method)">- (Object) <strong>appdomains</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#apps-instance_method" title="#apps (instance method)">- (Object) <strong>apps</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Get a list of all apps.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_app-instance_method" title="#create_app (instance method)">- (Object) <strong>create_app</strong>(appname, start) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a new app Parameters are:.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_appdomain-instance_method" title="#create_appdomain (instance method)">- (Object) <strong>create_appdomain</strong>(appname, domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_app-instance_method" title="#delete_app (instance method)">- (Object) <strong>delete_app</strong>(appname) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_appdomain-instance_method" title="#delete_appdomain (instance method)">- (Object) <strong>delete_appdomain</strong>(appname, domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_env-instance_method" title="#delete_env (instance method)">- (Object) <strong>delete_env</strong>(appname, key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#env-instance_method" title="#env (instance method)">- (Object) <strong>env</strong>(appname, key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong>(u, p) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Inititalizer for the client class.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#platform_coupon_request-instance_method" title="#platform_coupon_request (instance method)">- (HTTParty::Response) <strong>platform_coupon_request</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a coupon request against <a
+href="http://nodester.com">nodester.com</a> for early access.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#platform_create_user-instance_method" title="#platform_create_user (instance method)">- (Object) <strong>platform_create_user</strong>(coupon, user, password, email, rsakey) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a new user from the coupon given.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#platform_delete_user-instance_method" title="#platform_delete_user (instance method)">- (Object) <strong>platform_delete_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Deletes the current user.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#platform_status-instance_method" title="#platform_status (instance method)">- (Object) <strong>platform_status</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the nodester.com platform status :appshosted=>1599, :appsrunning=>988.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start_stop_app-instance_method" title="#start_stop_app (instance method)">- (Object) <strong>start_stop_app</strong>(appname, running = true) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_app-instance_method" title="#update_app (instance method)">- (Object) <strong>update_app</strong>(appname, opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_env-instance_method" title="#update_env (instance method)">- (Object) <strong>update_env</strong>(appname, key, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_npm-instance_method" title="#update_npm (instance method)">- (Object) <strong>update_npm</strong>(appname, action, package) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+curl -X POST -u &#8220;mwawrusch:mw09543089&#8221; -d
+&#8220;appname=myappname&amp;action=install&amp;package=express&#8221; <a
+href="http://api.nodester.com/npm">api.nodester.com/npm</a>.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_user-instance_method" title="#update_user (instance method)">- (Object) <strong>update_user</strong>(opts = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Updates the current user.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Nodester::Client (class)">Client</a></span></tt>) <strong>initialize</strong>(u, p) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Inititalizer for the client class.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>u</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the user name of your nodester.com account.
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>p</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the password of your nodester.com account.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id u'>u</span><span class='comma'>,</span> <span class='id p'>p</span> <span class='rparen'>)</span>
+  <span class='ivar'>@auth</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:username</span> <span class='op'>=&gt;</span> <span class='id u'>u</span><span class='comma'>,</span> <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='id p'>p</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="app-instance_method">
+  
+    - (<tt>Object</tt>) <strong>app</strong>(appname) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id app'>app</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/app/</span><span class='embexpr_beg'>#{</span><span class='id appname'>appname</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="appdomains-instance_method">
+  
+    - (<tt>Object</tt>) <strong>appdomains</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='id appdomains'>appdomains</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/appdomains</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="apps-instance_method">
+  
+    - (<tt>Object</tt>) <strong>apps</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Get a list of all apps. Returns:
+</p>
+<pre class="code">
+  An array containing a list of apps, if any.
+</pre>
+<p>
+App object format:
+</p>
+<pre class="code">
+  name : testxyz1
+  port : 12344
+  gitrepo : 'git@nodester.com:/node/git/mwawrusch/blah.git'
+  running : false
+  pid : &quot;unknown&quot; | some pid 
+  gitrepo : 'git@nodester.com:/node/git/mwawrusch/2914-2295037e88fed947a9b3b994171c5a9e.git&quot;, &quot;running&quot;=&gt;false, &quot;pid&quot;=&gt;&quot;unknown&quot;}</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 163</span>
+
+<span class='kw'>def</span> <span class='id apps'>apps</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/apps</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_app-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_app</strong>(appname, start) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a new app Parameters are:
+</p>
+<pre class="code">
+  appname (required). The name of the app.
+  start (required). The file to start, for example server.js.
+</pre>
+<p>
+Returns:
+</p>
+<pre class="code">
+  status : &quot;success&quot; | &quot;failure&quot;
+  message : &quot;some text&quot; ==&gt; Only if failure
+  port : 12345
+  gitrepo : 'git@nodester.com:/node/git/mwawrusch/blah.git'
+  start : &quot;the value of start, for example servre.js&quot;
+  running : true | false 
+  pid : &quot;unknown&quot; | some pid</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='id create_app'>create_app</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id start'>start</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span><span class='op'>=&gt;</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:start</span><span class='op'>=&gt;</span><span class='id start'>start</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/app</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_appdomain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_appdomain</strong>(appname, domain) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+193
+194
+195
+196</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 193</span>
+
+<span class='kw'>def</span> <span class='id create_appdomain'>create_appdomain</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id domain'>domain</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:domain</span><span class='op'>=&gt;</span><span class='id domain'>domain</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/appdomains</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete_app-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_app</strong>(appname) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='id delete_app'>delete_app</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/app</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete_appdomain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_appdomain</strong>(appname, domain) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+198
+199
+200
+201</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 198</span>
+
+<span class='kw'>def</span> <span class='id delete_appdomain'>delete_appdomain</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id domain'>domain</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:domain</span><span class='op'>=&gt;</span><span class='id domain'>domain</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/appdomains</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete_env-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_env</strong>(appname, key) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177
+178</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='id delete_env'>delete_env</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:key</span><span class='op'>=&gt;</span><span class='id key'>key</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/env</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="env-instance_method">
+  
+    - (<tt>Object</tt>) <strong>env</strong>(appname, key) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 180</span>
+
+<span class='kw'>def</span> <span class='id env'>env</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id key'>key</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:key</span><span class='op'>=&gt;</span><span class='id key'>key</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/env</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="platform_coupon_request-instance_method">
+  
+    - (<tt>HTTParty::Response</tt>) <strong>platform_coupon_request</strong>(email) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a coupon request against <a
+href="http://nodester.com">nodester.com</a> for early access.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>:</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+email the email where the coupon should be sent to.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>HTTParty::Response</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+A response. &#8216;status&#8217; : &#8220;success - you are now in queue to
+receive an invite on our next batch!&#8221; | &#8220;failure&#8220;
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id platform_coupon_request'>platform_coupon_request</span><span class='lparen'>(</span><span class='id email'>email</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span> <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id email'>email</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:base_uri</span> <span class='op'>=&gt;</span> <span class='const'>PLATFORM_URI</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/coupon</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="platform_create_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>platform_create_user</strong>(coupon, user, password, email, rsakey) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a new user from the coupon given.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id platform_create_user'>platform_create_user</span><span class='lparen'>(</span><span class='id coupon'>coupon</span><span class='comma'>,</span><span class='id user'>user</span><span class='comma'>,</span><span class='id password'>password</span><span class='comma'>,</span><span class='id email'>email</span><span class='comma'>,</span><span class='id rsakey'>rsakey</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span> <span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:coupon</span> <span class='op'>=&gt;</span> <span class='id coupon'>coupon</span><span class='comma'>,</span><span class='symbol'>:user</span> <span class='op'>=&gt;</span><span class='id user'>user</span><span class='comma'>,</span><span class='symbol'>:password</span><span class='op'>=&gt;</span><span class='id password'>password</span><span class='comma'>,</span><span class='symbol'>:email</span><span class='op'>=&gt;</span><span class='id email'>email</span><span class='comma'>,</span><span class='symbol'>:rsakey</span><span class='op'>=&gt;</span><span class='id rsakey'>rsakey</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:base_uri</span> <span class='op'>=&gt;</span> <span class='const'>PLATFORM_URI</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/user</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="platform_delete_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>platform_delete_user</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Deletes the current user.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id platform_delete_user'>platform_delete_user</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/user</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="platform_status-instance_method">
+  
+    - (<tt>Object</tt>) <strong>platform_status</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the nodester.com platform status :appshosted=>1599, :appsrunning=>988
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id platform_status'>platform_status</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:base_uri</span> <span class='op'>=&gt;</span> <span class='const'>PLATFORM_URI</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/status</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="start_stop_app-instance_method">
+  
+    - (<tt>Object</tt>) <strong>start_stop_app</strong>(appname, running = true) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id start_stop_app'>start_stop_app</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id running'>running</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span><span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span> <span class='symbol'>:running</span><span class='op'>=&gt;</span><span class='id start'>start</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/app</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_app-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_app</strong>(appname, opts = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 128</span>
+
+<span class='kw'>def</span> <span class='id update_app'>update_app</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id opts'>opts</span><span class='period'>.</span><span class='id merge!'>merge!</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span><span class='op'>=&gt;</span> <span class='id opts'>opts</span><span class='comma'>,</span> <span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/app</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_env-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_env</strong>(appname, key, value) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172
+173</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='id update_env'>update_env</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id key'>key</span><span class='comma'>,</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:key</span><span class='op'>=&gt;</span><span class='id key'>key</span><span class='comma'>,</span><span class='symbol'>:value</span><span class='op'>=&gt;</span><span class='id value'>value</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/env</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_npm-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_npm</strong>(appname, action, package) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+curl -X POST -u &#8220;mwawrusch:mw09543089&#8221; -d
+&#8220;appname=myappname&amp;action=install&amp;package=express&#8221; <a
+href="http://api.nodester.com/npm">api.nodester.com/npm</a>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 187</span>
+
+<span class='kw'>def</span> <span class='id update_npm'>update_npm</span><span class='lparen'>(</span><span class='id appname'>appname</span><span class='comma'>,</span><span class='id action'>action</span><span class='comma'>,</span><span class='id package'>package</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:appname</span> <span class='op'>=&gt;</span> <span class='id appname'>appname</span><span class='comma'>,</span><span class='symbol'>:action</span> <span class='op'>=&gt;</span> <span class='id action'>action</span><span class='comma'>,</span><span class='symbol'>:package</span><span class='op'>=&gt;</span><span class='id package'>package</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/npm</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_user</strong>(opts = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Updates the current user.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/nodester/client.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id update_user'>update_user</span><span class='lparen'>(</span><span class='id opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='symbol'>:body</span> <span class='op'>=&gt;</span> <span class='id opts'>opts</span><span class='comma'>,</span><span class='symbol'>:basic_auth</span> <span class='op'>=&gt;</span> <span class='ivar'>@auth</span><span class='rbrace'>}</span>
+  <span class='id handle_result'>handle_result</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id put'>put</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/user</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Jul 30 00:01:02 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.2 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,3 @@
+lib/nodester.rb 79401a16c03968f7c652ef7eb4b69078cdfd519f
+lib/nodester/client.rb 3e47405699477352134c61bda922698c3947b8bc
+lib/nodester/version.rb aaa7e0f67025cb3ba7acc48c18fb0e64eac483cc
