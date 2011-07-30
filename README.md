@@ -45,6 +45,17 @@ Thanks to
 
 This gem was created to the tunes of Natalia Kills and Nicki Minaj.
 
+## Release Notes
+
+### 0.0.3
+* Updated docs
+
+### 0.0.2
+* Bug fix for NPM
+
+### 0.0.1
+* First version
+
 ## Contributing to Nodester
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
