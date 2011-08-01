@@ -220,9 +220,7 @@ public
       options={:body => {:appname => appname,:key=>key},:basic_auth => @auth}
       handle_result self.class.get('/env', options)
     end
-  
-  # curl -X POST -u "mwawrusch:mw09543089" -d "appname=myappname&action=install&package=express" http://api.nodester.com/npm
-  
+    
     # Manages the NPM package manager associated with an app.
     # @param (String) appname the name of the app.
     # @param (String) action the action to perform. Can be install|upgrade|uninstall. Check official documentation

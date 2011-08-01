@@ -19,7 +19,9 @@ A more detailed description can be found at <http://rubydoc.info/gems/nodester>.
 ###Some Sample Code
 
     client = Nodester::Client.new("username","password")
+
     client.create_app 'myappname','server.js'
+
     ...
 
 ### Note
