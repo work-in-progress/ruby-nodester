@@ -47,7 +47,7 @@ private
     # @raise [ResponseError] raised in case of a web service related error.
     # @raise [StandardError] raised in case of an error that is not web service related. 
     # @return [HTTParty::Response] the response as returned by the web request.
-    def self.bad_response(response)
+    def bad_response(response)
       if response.class == HTTParty::Response
        raise ResponseError, response
       end
@@ -157,7 +157,7 @@ public
     # @return [HTTParty::Response] A response.
     def start_stop_app(appname,running = true)
       
-      options={:body=> {:appname => appname, :running=>start}, :basic_auth => @auth}
+      options={:body=> {:appname => appname, :running=>running}, :basic_auth => @auth}
       handle_result self.class.put('/app', options)
     end
 

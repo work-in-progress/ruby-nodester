@@ -49,6 +49,9 @@ This gem was created to the tunes of Natalia Kills and Nicki Minaj.
 
 ## Release Notes
 
+### 0.0.4
+* Bug Fixing: start stop app, error handling
+
 ### 0.0.3
 * Updated docs
 
