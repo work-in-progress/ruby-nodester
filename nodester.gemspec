@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Martin Wawrusch"]
   s.email       = ["martin@wawrusch.com"]
-  s.homepage    = "http://github.com/scottyapp/nodester"
+  s.homepage    = "http://github.com/scottyapp/ruby-nodester"
   s.summary     = %q{An API wrapper for the nodester API (http://nodester.com).}
   s.description = %q{A gem that implements the nodester.com API which allows you to cloud-host node.js applications.}
   s.extra_rdoc_files   = ["LICENSE","README.md"]
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   Follow @martin_sunset on Twitter for announcements, updates and news
   https://twitter.com/martin_sunset
 
-  To get the source go to http://github.com/scottyapp/nodester
+  To get the source go to http://github.com/scottyapp/ruby-nodester
 
 **********************************************************************************    
 eos
